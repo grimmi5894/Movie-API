@@ -1,13 +1,12 @@
 /* eslint-disable no-console */
 const express = require('express')
-const bodyParser = require('body-parser')
-const { getAllMovies, getMovieByTitle } = require('./controller/movies')
+const { getAllMovies, getMovieByTitleOrDirector } = require('./controller/movies')
 
 const app = express()
 
-app.get('/', getAllMovies)
+app.get('/movies', getAllMovies)
 
-app.get('/:title', getMovieByTitle)
+app.get('/movies/:titleOrDirector', getMovieByTitleOrDirector)
 
 app.all('*', (request, response) => {
   return response.sendStatus(404)

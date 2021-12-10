@@ -4,13 +4,14 @@ const getAllMovies = (request, response) => {
   return response.send(movies)
 }
 
-const getMovieByTitle = (request, response) => {
-  const { title } = request.params
-  const foundTitle = movies.filter((movie) => {
-    return movie.title.includes(title)
+const getMovieByTitleOrDirector = (request, response) => {
+  const { titleOrDirector } = request.params
+  const foundMovies = movies.filter((movie) => {
+    return movie.title.toLowerCase().includes(titleOrDirector) ||
+      movie.directors.toString().toLowerCase().includes(titleOrDirector)
   })
 
-  return response.send(foundTitle)
+  return response.send(foundMovies)
 }
 
-module.exports = { getAllMovies, getMovieByTitle }
+module.exports = { getAllMovies, getMovieByTitleOrDirector }
