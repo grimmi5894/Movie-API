@@ -14,4 +14,8 @@ const getMovieByTitleOrDirector = (request, response) => {
   return response.send(foundMovies)
 }
 
-module.exports = { getAllMovies, getMovieByTitleOrDirector }
+const saveNewMovie = (request, response) => {
+
+}
+
+module.exports = { getAllMovies, getMovieByTitleOrDirector, saveNewMovie }

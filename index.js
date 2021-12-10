@@ -1,12 +1,17 @@
 /* eslint-disable no-console */
 const express = require('express')
-const { getAllMovies, getMovieByTitleOrDirector } = require('./controller/movies')
+const bodyParser = require('body-parser')
+const { getAllMovies, getMovieByTitleOrDirector, saveNewMovie } = require('./controller/movies')
 
 const app = express()
 
 app.get('/movies', getAllMovies)
 
 app.get('/movies/:titleOrDirector', getMovieByTitleOrDirector)
+
+app.use(bodyParser.json())
+
+app.post('/', saveNewMovie)
 
 app.all('*', (request, response) => {
   return response.sendStatus(404)
