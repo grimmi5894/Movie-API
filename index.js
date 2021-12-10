@@ -11,7 +11,7 @@ app.get('/movies/:titleOrDirector', getMovieByTitleOrDirector)
 
 app.use(bodyParser.json())
 
-app.post('/', saveNewMovie)
+app.post('/movies', saveNewMovie)
 
 app.all('*', (request, response) => {
   return response.sendStatus(404)
